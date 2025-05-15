@@ -25,10 +25,15 @@ void putsort(coada *&q, int x, char prio)
             q->head=p;
             q->tail->suc=q->head;
         }
+        else if(p->prio>=q->tail->prio)
+        {
+            q->tail->succ=p;
+            q->tail=q->tail->suc;
+        }
         else if (p->prio>=q->head->prio)
         {
             element *k=q->head;
-            while(p->prio>=k->suc->prio && k->suc!=0)
+            while(p->prio>=k->suc->prio)
             {
                 k=k->suc;
             }
